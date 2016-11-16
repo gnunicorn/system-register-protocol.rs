@@ -11,22 +11,21 @@ pub use app::{App};
 #[cfg(target_os = "linux")]
 mod linux;
 #[cfg(target_os = "linux")]
-pub use linux::{ install };
+pub use linux::{ install, open };
 
 
 
 #[cfg(target_os = "windows")]
 mod windows;
 #[cfg(target_os = "windows")]
-pub use windows::{ install };
-
+pub use windows::{ install, open };
 
 
 
 #[cfg(target_os = "macos")]
 mod macos;
 #[cfg(target_os = "macos")]
-pub use macos::{ install };
+pub use macos::{ install, open };
 
 
 
