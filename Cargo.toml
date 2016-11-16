@@ -4,3 +4,7 @@ version = "0.1.0"
 authors = ["Benjamin Kampmann <ben@gnunicorn.org>"]
 
 [dependencies]
+
+
+[target.'cfg(windows)'.dependencies]
+winreg = '0.4.0'
