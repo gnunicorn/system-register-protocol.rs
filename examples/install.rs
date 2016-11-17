@@ -14,6 +14,7 @@ fn install_and_open() -> bool {
 	let mut rng = rand::thread_rng();
 	let exec = String::from(std::env::current_exe().unwrap().to_str().unwrap());
 	let app = App {exec: exec,
+				   bundle_id: "net.maidsafe.example".to_string(),
 				   vendor: "MaidSafe".to_string(),
 				   name: "Example".to_string(),
 				   icon: None};

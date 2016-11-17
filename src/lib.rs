@@ -2,6 +2,9 @@
 
 // inspired by https://github.com/feross/webtorrent-desktop/blob/4bb2056bc9c1a421815b97d03ffed512575dfde0/src/main/handlers.js
 
+#[cfg(target_os = "macos")]
+
+extern crate libc;
 
 mod app;
 pub use app::{App}; 

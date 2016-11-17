@@ -4,16 +4,14 @@ use std::process::Command;
 
 use app::App;
 
-use libc::{c_void, c_long);
-
-
+use libc;
 
 #[repr(C)]
-struct __CFString(c_void);
+struct __CFString(libc::c_void);
 type CFStringRef = *const __CFString;
 
-type CFAllocatorRef = *const c_void;
-type CFIndex = c_long;
+type CFAllocatorRef = *const libc::c_void;
+type CFIndex = libc::c_long;
 type CFStringEncoding = u32;
 
 
@@ -61,10 +59,10 @@ pub fn open(url: String) -> bool {
 }
 
 pub fn install(app: App, schemes: Vec<String>) -> bool {
-    let bundle_id = convert_to_cfstring(App.bundle_id.to_str());
+    let bundle_id = convert_to_cfstring(app.bundle_id.as_str());
     for scheme in schemes {
     	// FIXME: do we have any way to learn this failed?
-    	unsafe { LSSetDefaultHandlerForURLScheme(convert_to_cfstring(scheme), bundle_id); }
+    	unsafe { LSSetDefaultHandlerForURLScheme(convert_to_cfstring(scheme.as_str()), bundle_id); }
     }
 
     true

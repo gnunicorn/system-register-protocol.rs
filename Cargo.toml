@@ -9,9 +9,8 @@ authors = ["Benjamin Kampmann <ben@gnunicorn.org>"]
 rand = "0.3.0"
 
 
-[target.'cfg(windows)'.dependencies]
+[target.'cfg(target_os = "windows")'.dependencies]
 winreg = '0.4.0'
 
-[target.'cfg(macos)'.dependencies]
+[target.'cfg(target_os = "macos")'.dependencies]
 libc  = "0.2"
-objc = "0.2"
