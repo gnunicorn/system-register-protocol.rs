@@ -5,6 +5,8 @@ extern crate rand;
 use rand::Rng;
 use std::env;
 use std::process::exit;
+use std::{thread, time};
+
 
 
 use system_register_protocol::{ App, install, open };
@@ -26,6 +28,7 @@ fn install_and_open() -> bool {
 	if install(app, vec![schema.clone()]) {
 
 		println!("Install succeeded 😄");
+
 		println!("Trying to open {}:test", schema);
 
 		if open(format!("{}:test", schema)) {
@@ -46,7 +49,13 @@ fn install_and_open() -> bool {
 fn main() {
 
 	if let Some(url) = env::args().skip(1).next() {
-		println!("Being started with {} as first parameter. Yay 🎉 and good bye", url);
+		println!("Being started with {} as first parameter. Yay 🎉. Closing in 3", url);
+		thread::sleep(time::Duration::from_secs(1));
+		println!("2");
+		thread::sleep(time::Duration::from_secs(1));
+		println!("1");
+		thread::sleep(time::Duration::from_secs(1));
+		println!("Good bye!");
 		exit(0);
 	}
 
